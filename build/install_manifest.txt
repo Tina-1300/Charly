@@ -1,0 +1,2 @@
+C:/Users/alexp/OneDrive/Bureau/Tina/library/Charly/build/Charly/include/Charly/Fraction.hpp
+C:/Users/alexp/OneDrive/Bureau/Tina/library/Charly/build/Charly/lib/libCharly.a
