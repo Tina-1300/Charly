@@ -1,5 +1,7 @@
 #pragma once
 
+#include <iostream>
+
 namespace Charly{
 
     class Fraction{
@@ -7,29 +9,42 @@ namespace Charly{
         public:
             Fraction(int num, int den);
 
-            // addition
-            Fraction operator+(const Fraction& other) const;
+            Fraction operator+(const Fraction& other) const; // addition
 
-            // soustraction
-            Fraction operator-(const Fraction& other) const;
+            Fraction operator-(const Fraction& other) const; // soustraction
 
-            // multiplication
-            Fraction operator*(const Fraction& other) const ;
+            Fraction operator*(const Fraction& other) const; // multiplication
 
-            // division
-            Fraction operator/(const Fraction& other) const ;
+            Fraction operator/(const Fraction& other) const; // division
+
+            friend bool operator==(const Fraction& f1, const Fraction& f2); // operator ==
+
+            friend bool operator<(const Fraction& f1, const Fraction& f2); // operator <
+
+            friend bool operator!=(const Fraction& f1, const Fraction& f2); // operator !=
+
+            friend bool operator<=(const Fraction& f1, const Fraction& f2); // operator <=
+
+            friend bool operator>(const Fraction& f1, const Fraction& f2); // operator >
+
+            friend bool operator>=(const Fraction& f1, const Fraction& f2); // operator >=
+
+            friend std::ostream& operator<<(std::ostream& os, const Fraction& f); // operator <<
 
             void print() const;
 
-            void reduction(bool reduce);
+            void reduction(bool reduce); // reduction of the fraction
+
+            template <typename T>
+            T to_decimal(){
+                return static_cast<T>(numerator) / static_cast<T>(denominator);
+            }
 
         private:
             int numerator;
             int denominator;
 
-            // simplification de la fraction via PGCD (askip ça va plus vite que la decomposition en nombre premiers)
             void simplify();
-
     };
 
 }

@@ -1,18 +1,14 @@
+set(lib Charly) # library name
 
-# Ajouter les fichiers sources de tests
-set(TEST_SOURCES
-    test_fraction.cpp 
-)
+# Define a function to add tests easily
+function(add_crypto_test test_name test_source)
+    add_executable(${test_name} ${test_source})
+    target_link_libraries(${test_name} PRIVATE ${lib})
+    add_test(NAME ${test_name} COMMAND ${test_name})
+endfunction()
 
-# Créer une cible pour les tests
-add_executable(tests ${TEST_SOURCES})
-
-# Lier la bibliothèque principale aux tests
-target_link_libraries(tests PRIVATE 
-    Charly
-    
-)
-
-# Activer les tests avec CTest
+# Enable testing
 enable_testing()
-add_test(NAME Tests COMMAND tests)
+
+# Add all test files here
+add_crypto_test(test_fraction test_fraction.cpp)

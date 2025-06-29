@@ -1,5 +1,4 @@
 #include "../include/Charly/Fraction.hpp"
-#include <iostream>
 #include <numeric>
 
 namespace Charly{
@@ -22,14 +21,12 @@ namespace Charly{
         return Fraction(num, den);
     }
 
-
     Fraction Fraction::operator*(const Fraction& other) const {
         int num = numerator * other.numerator;
         int den = denominator * other.denominator;
         return Fraction(num, den);
     }
 
-    
     Fraction Fraction::operator/(const Fraction& other) const {
         if (other.numerator == 0){
             throw std::invalid_argument("Division by zero fraction");
@@ -47,7 +44,35 @@ namespace Charly{
         return (!reduce) ? void() : simplify();
     }
 
+    bool operator==(const Fraction& f1, const Fraction& f2){
+        return (static_cast<long long>(f1.numerator) * f2.denominator == static_cast<long long>(f2.numerator) * f1.denominator);
+    }
+
+    bool operator<(const Fraction& f1, const Fraction& f2){
+        return (static_cast<long long>(f1.numerator) * f2.denominator < static_cast<long long>(f2.numerator) * f1.denominator);
+    }
+
+    bool operator!=(const Fraction& f1, const Fraction& f2){
+        return !(f1 == f2);
+    }
     
+    bool operator<=(const Fraction& f1, const Fraction& f2){
+        return (f1 < f2) || (f1 == f2);
+    }
+
+    bool operator>(const Fraction& f1, const Fraction& f2){
+        return f2 < f1;
+    }
+
+    bool operator>=(const Fraction& f1, const Fraction& f2){
+        return (f1 > f2) || (f1 == f2);
+    }
+
+    std::ostream& operator<<(std::ostream& os, const Fraction& f) {
+        os << f.numerator << "/" << f.denominator;
+        return os;
+    }
+
     void Fraction::simplify(){
         int gcd = std::gcd(numerator, denominator);
         numerator /= gcd;
@@ -58,6 +83,5 @@ namespace Charly{
             numerator = -numerator;
         }
     }
-
 
 }

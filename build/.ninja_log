@@ -1,8 +1,0 @@
-# ninja log v6
-3245	3457	7696039556435037	libCharly.a	798d8324d4f47f5e
-6	3244	7696039524174621	CMakeFiles/Charly.dir/src/Fraction.cpp.obj	5f3a6c5ccdcaee49
-3458	3743	7696039558621671	tests/tests.exe	aadf179668c90440
-26	3067	7696039524330467	tests/CMakeFiles/tests.dir/test_fraction.cpp.obj	8b6d7a218e34488b
-31	400	7696040845541539	build.ninja	3bd5642ee873b13f
-33	1351	7696040846478828	tests/CMakeFiles/tests.dir/test_fraction.cpp.obj	8b6d7a218e34488b
-1352	1580	7696040859667648	tests/tests.exe	aadf179668c90440
